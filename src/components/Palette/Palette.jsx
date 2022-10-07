@@ -1,4 +1,4 @@
-import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { FaTrash,FaEdit } from 'react-icons/fa';
 import { useContext } from "react";
 import "./Palette.css";
 import { ColorPalettesContext } from "../../context/ColorPalettesContext";
@@ -25,15 +25,13 @@ const Palette = ({ palette }) => {
       </div>
       <div className='palette-actions'>
         <div className='fav' onClick={handleDelete}>
-            <FaHeart className='heart'/>
+            <FaTrash className='heart'/>
+        </div> 
+        <div className='fav' onClick={handleDelete}>
+            <FaEdit className='heart'/>
         </div>
-        
+
       </div>
-      {/* <div className="palette-actions">
-        <button className="btn-form" type="button" onClick={handleDelete}>
-          Eliminar
-        </button>
-      </div> */}
     </div>
   );
 };
