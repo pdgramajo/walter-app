@@ -12,7 +12,7 @@ const LoginRef = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(username.current)
+    // console.log(username.current)
     //id, className, value, placeholder
     const user = {
       username: username.current.value,

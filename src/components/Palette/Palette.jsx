@@ -1,79 +1,41 @@
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FavoritesContext } from '../../context/FavoritesContext';
-import './Palette.css';
+import { useContext } from "react";
+import "./Palette.css";
+import { ColorPalettesContext } from "../../context/ColorPalettesContext";
 
 const Palette = ({ palette }) => {
-  const { id, name, colors, liked, latitud, longitud } = palette
-  const { favorites, setFavorites } = useContext(FavoritesContext);
-  const [isFavorite, setIsFavorite] = useState(liked);
-  console.log("palette",palette)
+  const { id, name, latitud, longitud, temperature, windSpeed } = palette;
+  const { colorPalettes, setColorPalettes } = useContext(ColorPalettesContext);
 
-  //TODO tienes que modificar el like en la paleta
-  const handleFavorite = () => {
-    setIsFavorite((isFavorite) => !isFavorite);
-
-    //busco si la paleta ya esta en favoritos
-    const foundIndex = favorites.findIndex(fav => fav.id === id);
-
-    //para agregar a favoritos
-    if (foundIndex === -1) {
-      setFavorites([...favorites, palette])
-      return
-    }
-
-    //Quitar de favoritos
-    setFavorites(
-      favorites.filter((fav) => fav.id !== id)//!==
+  const handleDelete = () => {
+    const palettesFiltered = colorPalettes.filter(
+      (palette) => palette.id !== id
     );
-  }
-
-  const copyToClipboard = (value) => {
-    navigator.clipboard.writeText(value)
-  }
+    setColorPalettes(palettesFiltered);
+  };
 
   return (
-    <div className='palette-container'>
-      <div className='palette'>
-        <h3>{name}</h3>
-        <li>Ubicacion</li>
-        <li>{latitud}</li>
-        <li>{longitud}</li>
-        <li>Temperatura</li>
-        <li>Velocidad del viento</li>
-        {/* {colors.map((color, index) => {
-          return (
-            <div
-              key={index}
-              className={`color c${index}`}
-              style={{ backgroundColor: color }}
-              onClick={() => copyToClipboard(color)}
-            >
-              <div className='hex-code'>{color}</div>
-            </div>
-          );
-        })} */}
+    <div className="palette-container" key={id}>
+      <div className="palette">
+        <h3>city: {name}</h3>
+        <li>lat: {latitud}</li>
+        <li>lon:{longitud}</li>
+        <li>Temperatura :{temperature} C°</li>
+        <li>Velocidad del viento : {windSpeed} km</li>
       </div>
       <div className='palette-actions'>
-        {/* <div className='fav' onClick={handleFavorite}>
-          {isFavorite ? (
-            <FaHeart className='heart' />
-          ) : (
-            <FaRegHeart />
-          )}
+        <div className='fav' onClick={handleDelete}>
+            <FaHeart className='heart'/>
         </div>
-        <Link className='btn-see-more' to={`/palette/${id}`}>
-          Ver más
-        </Link> */}
-        <button className='btn-form' type='submit'>
+        
+      </div>
+      {/* <div className="palette-actions">
+        <button className="btn-form" type="button" onClick={handleDelete}>
           Eliminar
         </button>
-
-      </div>
-
+      </div> */}
     </div>
   );
-}
+};
 
-export default Palette
+export default Palette;
