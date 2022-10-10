@@ -5,16 +5,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
-import { ColorPalettesProvider } from "./context/ColorPalettesContext";
+import { UbicacionContext } from "./context/UbicacionContext";
+import { UbicacionProvider } from "./context/UbicacionContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <ColorPalettesProvider>
+        <UbicacionProvider>
           <App />
-        </ColorPalettesProvider>
+        </UbicacionProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
@@ -24,3 +25,4 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+

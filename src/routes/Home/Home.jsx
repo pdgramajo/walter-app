@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import "./Home.css";
-import Palettes from "../../components/Palette/Palettes";
-import { ColorPalettesContext } from "../../context/ColorPalettesContext";
+import Ubicaciones from "../../components/Ubicacion/Ubicaciones";
+import { UbicacionContext } from "../../context/UbicacionContext";
 
 const Home = () => {
-  const { colorPalettes } = useContext(ColorPalettesContext);
+  const { ubicaciones } = useContext(UbicacionContext);
   return (
     <div className="main-container">
-      <Palettes palettes={colorPalettes} />
+      <Ubicaciones ubicaciones={ubicaciones} />
     </div>
   );
 };
