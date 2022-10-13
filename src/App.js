@@ -1,22 +1,26 @@
-import './App.css';
-import { Routes, Route } from 'react-router-dom'
-import Home from './routes/Home/Home';
-import Navigation from './routes/Navigation/Navigation';
-import LoginRef from './routes/Login/LoginRef';
-import UbicationCreation from './routes/Ubication/UbicationCreation';
-import UbicationDisplay from './routes/Ubication/UbicationDisplay';
+import "./App.css";
+import { useContext } from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./routes/Home/Home";
+import LoginRef from "./routes/Login/LoginRef";
+import UbicationCreation from "./routes/Ubication/UbicationCreation";
+import UbicationDisplay from "./routes/Ubication/UbicationDisplay";
+import { UserContext } from "./context/UserContext";
 
 function App() {
+  const { currentUser } = useContext(UserContext);
 
   return (
-    <div className='App'>
+    <div className="App">
       <Routes>
-        <Route path='/' element={<Navigation />}>
-          <Route index element={<Home />} />
-          <Route path='login' element={<LoginRef />} />
-          <Route path='ubication/:id' element={<UbicationDisplay />} />
-          <Route path='ubication/create' element={<UbicationCreation />} />
-        </Route>
+        <Route index element={<LoginRef />} />
+        {currentUser && (
+          <>
+            <Route path="/home" element={<Home />} />
+            <Route path="ubication/:id" element={<UbicationDisplay />} />
+            <Route path="ubication/create" element={<UbicationCreation />} />
+          </>
+        )}
       </Routes>
     </div>
   );

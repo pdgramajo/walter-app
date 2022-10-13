@@ -20,7 +20,7 @@ const LoginRef = () => {
     }
     localStorage.setItem('currentUser', JSON.stringify(user))
     setCurrentUser(user)
-    navigate('/')
+    navigate('/home')
   }
 
   return (

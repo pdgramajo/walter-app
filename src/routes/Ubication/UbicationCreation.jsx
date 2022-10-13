@@ -47,7 +47,7 @@ const UbicationCreation = () => {
       windSpeed: hourly.windspeed_10m[currentHour - 1],
     };
     setUbications([...ubications, ubicationNew]);
-    navigate("/");
+    navigate("/home");
   };
 
   return (
