@@ -6,6 +6,7 @@ import LoginRef from "./routes/Login/LoginRef";
 import UbicationCreation from "./routes/Ubication/UbicationCreation";
 import UbicationDisplay from "./routes/Ubication/UbicationDisplay";
 import { UserContext } from "./context/UserContext";
+import UbicationEdit from "./routes/Ubication/UbicationEdit";
 
 function App() {
   const { currentUser } = useContext(UserContext);
@@ -18,6 +19,7 @@ function App() {
           <>
             <Route path="/home" element={<Home />} />
             <Route path="ubication/:id" element={<UbicationDisplay />} />
+            <Route path="ubication/:id/edit" element={<UbicationEdit/>} />
             <Route path="ubication/create" element={<UbicationCreation />} />
           </>
         )}

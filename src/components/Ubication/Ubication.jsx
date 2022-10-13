@@ -5,7 +5,7 @@ import "./Ubication.css";
 import { UbicationContext } from "../../context/UbicationContext";
 
 const Ubication = ({ ubication }) => {
-  const { id, name, latitud, longitud, temperature, windSpeed } = ubication;
+  const { id, cityName, latitud, longitud, temperature, windSpeed } = ubication;
   const { ubications, setUbications } = useContext(UbicationContext);
 
   const handleDelete = () => {
@@ -18,7 +18,7 @@ const Ubication = ({ ubication }) => {
   return (
     <div className="ubication-container" key={id}>
       <div className="ubication">
-        <h3>{name}</h3>
+        <h3>{cityName}</h3>
         <li>lat: {latitud}</li>
         <li>lon:{longitud}</li>
         <li>Temperatura :{temperature} C°</li>
@@ -28,9 +28,9 @@ const Ubication = ({ ubication }) => {
         <div className="fav" onClick={handleDelete}>
           <FaTrashAlt />
         </div>
-        { <div className="fav" onClick={handleDelete}>
-          <FaEdit/>
-        </div> }
+        <Link className='fav' to={`/ubication/${id}/edit`}>
+            <FaExpandArrowsAlt />
+        </Link>
         <Link className='fav' to={`/ubication/${id}`}>
             <FaExpandArrowsAlt />
         </Link>

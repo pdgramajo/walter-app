@@ -10,6 +10,9 @@ const LoginRef = () => {
   const password = useRef()
   const navigate = useNavigate()
 
+ 
+  
+
   const handleSubmit = (e) => {
     e.preventDefault()
     // console.log(username.current)
@@ -32,12 +35,14 @@ const LoginRef = () => {
         type="text"
         placeholder='Nombre de usuario'
         ref={username}
+        value="admin"
       />
       <input
         className='input-form'
         type='password'
         placeholder='Contraseña'
         ref={password}
+        value="admin"
       />
        <button className='btn-form' type='submit'>Iniciar Sesión</button>
     </form>
