@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { getWeather } from "../../service";
-import { UbicacionContext } from "../../context/UbicacionContext";
-import "./UbicacionCreation.css";
+import { getWeather } from "../../services/service";
+import { UbicationContext } from "../../context/UbicationContext";
+import "./UbicationCreation.css";
 
-const UbicacionCreation = () => {
-  const { ubicaciones, setUbicaciones } = useContext(UbicacionContext);
+const UbicationCreation = () => {
+  const { ubications, setUbications } = useContext(UbicationContext);
   const navigate = useNavigate();
   const {
     register,
@@ -14,9 +14,9 @@ const UbicacionCreation = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      cityName: "",
-      longitud: "", 
-      latitud: "" 
+      cityName: "", // ""
+      longitud: "", // ""
+      latitud: "", // ""
     },
   });
 
@@ -26,37 +26,36 @@ const UbicacionCreation = () => {
     return currentHour;
   };
 
-  const createUbicacion = async ({ cityName, latitud, longitud }) => {
-
+  const createUbication = async ({ cityName, latitud, longitud }) => {
     const weatherData = await getWeather(latitud, longitud);
-    console.log('createUbicacion | weatherData', weatherData);
+    
 
-    if(weatherData.error){
-      alert(weatherData.reason) // aqui pintar el error en la pantalla
+    if (weatherData.error) {
+      alert(weatherData.reason); // aqui pintar el error en la pantalla
     }
 
     const { hourly } = weatherData;
 
-    const currentHour = getCurrentHour()
+    const currentHour = getCurrentHour();
 
-    const ubicacionNew =  {
-      id: ubicaciones.length + 1,
+    const ubicationNew = {
+      id: ubications.length + 1,
       name: cityName,
       latitud: latitud,
       longitud: longitud,
       temperature: hourly.temperature_2m[currentHour - 1],
       windSpeed: hourly.windspeed_10m[currentHour - 1],
     };
-    setUbicaciones([...ubicaciones, ubicacionNew]);
+    setUbications([...ubications, ubicationNew]);
     navigate("/");
   };
 
   return (
-    <div className="ubicacion-new-container">
-      <h2>Crea una nueva ubicación</h2>
-      <form className="ubicacion-form" onSubmit={handleSubmit(createUbicacion)}>
+    <div className="ubication-new-container">
+      <span>Crea una nueva ubicación</span>
+      <form className="ubication-form" onSubmit={handleSubmit(createUbication)}>
         <input
-          className="input-ubicacion-name-form"
+          className="input-ubication-name-form"
           type="text"
           placeholder="Nombre de la ciudad"
           {...register("cityName", {
@@ -65,7 +64,7 @@ const UbicacionCreation = () => {
         />
         <p>{errors.cityName?.message}</p>
         <input
-          className="input-ubicacion-name-form"
+          className="input-ubication-name-form"
           type="text"
           placeholder="Ingrese latitud"
           {...register("latitud", {
@@ -74,7 +73,7 @@ const UbicacionCreation = () => {
         />
         <p>{errors.latitud?.message}</p>
         <input
-          className="input-ubicacion-name-form"
+          className="input-ubication-name-form"
           type="text"
           placeholder="Ingrese longitud"
           {...register("longitud", {
@@ -91,4 +90,4 @@ const UbicacionCreation = () => {
   );
 };
 
-export default UbicacionCreation;
+export default UbicationCreation;

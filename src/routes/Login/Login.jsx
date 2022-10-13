@@ -44,6 +44,10 @@ const Login = () => {
         />
         <p>{errors.password?.message}</p>
          <button className='btn-form' type='submit'>Iniciar Sesión</button>
+         <div>
+						<p>Eres nuevo?</p>
+						<Link to={'/registro'}>Regristarse</Link>
+					</div> 
       </form>
     </div>
   )

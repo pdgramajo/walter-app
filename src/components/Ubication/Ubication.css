@@ -1,19 +1,22 @@
-.ubicacion-container {
+.ubication-container {
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.2s ease;
   border-radius: 10px;
   padding: 25px;
-  background-color: cadetblue;
+  background: #1c92d2;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #f2fcfe, #1c92d2);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #f2fcfe, #1c92d2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.ubicacion-container:hover {
+
+.ubication-container:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.ubicacion {
+.ubication {
   display: flex;
-  flex-direction: column;
-  /*background-color: #ffffff;*/
+  flex-direction: column;  
+  border-radius: 20px;
 }
 
 .hex-code {
@@ -55,22 +58,24 @@ h3 {
 .fav {
   display: flex;
   text-align: center;
-  height: 34px;
-  width: 34px;
+  height: 50px;
+  width: 50px;
   justify-content: center;
   align-items: center;
   border: 1px solid #e9e9e9;
   padding: 5px;
   border-radius: 5px;
+  size: 40px;
   transition: background-color 0.2s ease;
 }
 
 .fav:hover {
   cursor: pointer;
   background-color: #f8f8f8;
+  color:red;
 }
 
-.ubicacion-actions {
+.ubication-actions {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

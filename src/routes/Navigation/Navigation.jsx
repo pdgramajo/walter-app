@@ -1,14 +1,14 @@
 import { useContext, useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
-import ubicacionLogo from '../../assets/logo.png';
+import ubicationLogo from '../../assets/logo.png';
 import './Navigation.css';
 
 const Navigation = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
 
   useEffect(() => {
-    const userStored = localStorage.getItem('currentUser')//obtener usuario de la cache
+    const userStored = localStorage.getItem('currentUser')
     // console.log({ userStored })
     if (userStored) {
       setCurrentUser(JSON.parse(userStored))
@@ -23,7 +23,7 @@ const Navigation = () => {
     <>
       <div className='navigation'>
         <Link className='logo-container' to='/'>
-          <img src={ubicacionLogo} alt='Logo' className='logo' />
+          <img src={ubicationLogo} alt='Logo' className='logo' />
         </Link>
         <div className='nav-links-container'>
           {currentUser ? (

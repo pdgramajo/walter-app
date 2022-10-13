@@ -5,17 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
-import { UbicacionContext } from "./context/UbicacionContext";
-import { UbicacionProvider } from "./context/UbicacionContext";
+import { UbicationProvider } from "./context/UbicationContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <UbicacionProvider>
+        <UbicationProvider>
           <App />
-        </UbicacionProvider>
+        </UbicationProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
@@ -25,4 +24,3 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-
