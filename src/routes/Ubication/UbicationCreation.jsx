@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { getWeather } from "../../services/service";
 import { UbicationContext } from "../../context/UbicationContext";

@@ -22,7 +22,7 @@ const UbicationEdit = () => {
         latitud: ubication[0]?.latitud,
       }
     setCurrentUbication(data);
-  }, []);
+  }, [id, ubications]);
 
   const getCurrentHour = () => {
     var currentDate = new Date();
@@ -34,7 +34,7 @@ const UbicationEdit = () => {
     const weatherData = await getWeather(latitud, longitud);
 
     if (weatherData.error) {
-      alert(weatherData.reason); // aqui pintar el error en la pantalla
+      alert(weatherData.reason);
     }
 
     const { hourly } = weatherData;
