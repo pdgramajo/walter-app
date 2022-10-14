@@ -47,7 +47,7 @@ const UbicationEdit = () => {
     console.log('handleEdit | ubicationsFiltered', ubicationsFiltered);
 
     const ubicationEdited = {
-      id: id,
+      id: Number(id),
       cityName: cityName,
       latitud: latitud,
       longitud: longitud,

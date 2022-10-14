@@ -25,7 +25,7 @@ const UbicationCreation = () => {
     const weatherData = await getWeather(latitud, longitud);
 
     if (weatherData.error) {
-      alert(weatherData.reason); // aqui pintar el error en la pantalla
+      alert(weatherData.reason);
     }
 
     const { hourly } = weatherData;

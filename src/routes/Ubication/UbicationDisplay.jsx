@@ -13,12 +13,12 @@ const UbicationDisplay = () => {
   return (
     <div className="ubication-display-container">
       <div className="ubication-display-card">
-        <h1 className="ubication-display-name">{ubication.name}</h1>
+        <h1 className="ubication-display-name">{ubication.cityName}</h1>
         <li>lat: {ubication.latitud}</li>
         <li>lon:{ubication.longitud}</li>
         <li>Temperatura :{ubication.temperature} C°</li>
         <li>Velocidad del viento : {ubication.windSpeed} km/h</li>
-        <Link className="btn-back" to="/">
+        <Link className="btn-back" to="/home">
           Volver al Inicio
         </Link>
       </div>
